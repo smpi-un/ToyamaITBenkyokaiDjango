@@ -12,5 +12,5 @@ class Book(models.Model):
     year_published = models.IntegerField()
     registration_date = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=10) # This can be changed to a choices field for specific statuses
-    tags = models.ManyToManyField(Tag, related_name='books')
+    tags = models.ManyToManyField(Tag, related_name='books', blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)

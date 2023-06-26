@@ -1,30 +1,56 @@
 # 即席蔵書管理アプリ
 
-このリポジトリは、6/25(日)に富山IT勉強会で開発したChatGPTによるDjangoの即席アプリケーションのコードです。アプリケーションの主な機能は本の蔵書管理です。
+本アプリケーションは、2023年6月25日に富山IT勉強会で開発されたものです。このアプリケーションは、ChatGPTによって作成されたDjangoの即席アプリケーションで、主な機能として本の蔵書管理が可能です。
 
-## 機能
+## 必要条件
+- Docker
+- Docker Compose
+- Git
 
-- 本の蔵書管理：新しい本を追加、蔵書一覧を表示、既存の本を更新または削除できます。
+## インストールおよび起動手順
 
-## インストールと起動
+1. GitHubからプロジェクトをcloneします。
 
-このアプリケーションはDockerを使用しています。Dockerがローカルマシンにインストールされていることを確認してください。Dockerがインストールされていない場合は、公式の[Dockerインストールガイド](https://docs.docker.com/get-docker/)に従って設定してください。
+```bash
+git clone git@github.com:smpi-un/ToyamaITBenkyokaiDjango.git
+```
 
-1. リポジトリをクローンします：
+2. プロジェクトのルートディレクトリに移動します。
 
-    ```
-    git clone git@github.com:smpi-un/ToyamaITBenkyokaiDjango.git
-    ```
+```bash
+cd ToyamaITBenkyokaiDjango
+```
 
-2. Docker Composeを使ってアプリケーションを起動します：
+3. Docker Composeを使用してアプリケーションとその依存関係を起動します。
 
-    ```
-    cd ChatGPT-Django-Book-Manager
-    docker-compose up
-    ```
+```bash
+docker-compose up
+```
 
-3. ブラウザで[http://localhost:8000/hello/books/](http://localhost:8000/hello/books/)にアクセスします。ここでアプリケーションの蔵書管理インターフェースを見ることができます。
+4. 新しいターミナルウィンドウを開き、Docker Composeを使用してDjangoコンテナのシェルにアクセスします。
 
-## ライセンス
+```bash
+docker-compose exec web bash
+```
 
-このプロジェクトはMITライセンスの下で公開されています。詳細については、[LICENSE](LICENSE)を参照してください。
+5. マイグレーションを適用します。
+
+```bash
+python manage.py migrate
+```
+
+6. Djangoの管理インターフェースを使用してユーザーを作成します。
+
+```bash
+python manage.py createsuperuser
+```
+
+その後、表示されるプロンプトに従ってユーザ名とパスワードを設定します。
+
+7. ログインします。ブラウザを開き、`http://localhost:8000/admin/`にアクセスします。先ほど作成したスーパーユーザーのユーザー名とパスワードを入力してログインします。
+
+これで、http://localhost:8000/hello/books/ にアクセスすると、アプリケーションの画面が表示されます。この画面表示はユーザがログインした状態を前提としています。
+
+## 注意事項
+
+本README.mdはAI（OpenAIのChatGPT）によって作成されました。具体的な操作手順や設定内容は、利用環境やプロジェクトの要件により適宜調整してください。
