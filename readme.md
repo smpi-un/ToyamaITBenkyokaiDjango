@@ -13,7 +13,7 @@
 1. リポジトリをクローンします：
 
     ```
-    git clone https://github.com/your-repository/ChatGPT-Django-Book-Manager.git
+    git clone git@github.com:smpi-un/ToyamaITBenkyokaiDjango.git
     ```
 
 2. Docker Composeを使ってアプリケーションを起動します：
