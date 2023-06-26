@@ -1,0 +1,14 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Information</title>
+</head>
+<body>
+    <h1>Book: {{ book.title }}</h1>
+    <p>Author: {{ book.author }}</p>
+    <p>Year Published: {{ book.year_published }}</p>
+    <p>Status: {{ book.status }}</p>
+    <p>Tags: {% for tag in book.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!-- templates/book_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Books</title>
+</head>
+<body>
+    <h1>My Books</h1>
+    <a href="{% url 'book_add' %}">Add new book</a>  <!-- 追加するリンク -->
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year Published</th>
+            <th>Status</th>
+            <th>Tags</th>
+            <th>Details</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.year_published }}</td>
+            <td>{{ book.status }}</td>
+            <td>{% for tag in book.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+            <td><a href="{% url 'book_detail' book.id %}">View Details</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
